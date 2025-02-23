@@ -49,7 +49,7 @@ int viewMode()
 int editMode()
 {
 
-    int i = 0;
+    size_t i = 0;
 
     gp_file = fopen(g_fileName, "r");
     if (gp_file == NULL)
@@ -71,7 +71,7 @@ int editMode()
 
     terminalRedraw();
 
-    char keyPressed;
+    int keyPressed;
 
     char *userInput = malloc(150 * sizeof(char));
     if (userInput == NULL)
@@ -105,7 +105,7 @@ int editMode()
                 return 1;
             }
             // User input with number nad dot in front
-            snprintf(numberedInput, 149, "%d. %s", i, userInput);
+            snprintf(numberedInput, 149, "%zu. %s", i, userInput);
 
             // Write to file
             gp_file = fopen(g_fileName, "a");
