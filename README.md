@@ -4,6 +4,6 @@ A simple Windows To-Do app that runs in the CLI. It -was built for the purpose o
 ## Build instructions
 ```
 $ git clone https://github.com/ThatKoalaGuy/ToDoCLI.git
-$ cd .\ToDoCLI
+$ cd .\ToDoCLI\
 $ make
 ```
