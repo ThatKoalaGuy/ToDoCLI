@@ -1,5 +1,5 @@
 # ToDoCLI
-A simple Windows To-Do app that runs in the CLI. It -was built for the purpose of learning the C launguage.
+A simple Windows To-Do app that runs in the CLI. It was built for the purpose of learning the C launguage.
 
 ## Build instructions
 ```
