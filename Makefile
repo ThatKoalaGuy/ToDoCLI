@@ -8,7 +8,7 @@ INC_DIR = include
 BUILD_DIR = build
 
 # Source files
-SRC = $(SRC_DIR)/main.c $(SRC_DIR)/todo.c
+SRC = $(SRC_DIR)/main.c $(SRC_DIR)/viewFunctions.c $(SRC_DIR)/editMode.c $(SRC_DIR)/deleteList.c 
 
 # Object files
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

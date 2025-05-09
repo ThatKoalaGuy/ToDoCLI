@@ -2,6 +2,10 @@
 #include <sys/stat.h> // For mkdir
 #include <direct.h>   // For _mkdir on Windows
 
+// Define the global variables
+FILE *gp_file = NULL;
+char *g_fileName = NULL;
+
 int main()
 {
     // Create the "todoAppData" folder if it doesn't exist
