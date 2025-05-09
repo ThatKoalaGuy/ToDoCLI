@@ -58,7 +58,7 @@ int editMode()
                 printf("\b \b");
             }
         }
-        else if (keyPressed == '\r') // Handle Enter key
+        else if (keyPressed == '\r' && strlen(userInput) != 0) // Handle Enter key
         {
             // Process the input when Enter is pressed
             i++;
