@@ -12,6 +12,7 @@
 #define KEY_ESC 27
 #define KEY_E 101
 #define KEY_DEL VK_DELETE
+#define KEY_BACKSPACE 8
 
 // Global variables
 extern FILE *gp_file;

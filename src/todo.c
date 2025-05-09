@@ -80,23 +80,34 @@ int editMode()
         return 1;
     }
 
+    userInput[0] = '\0'; // Initialize userInput buffer
+
     while (true)
     {
         keyPressed = _getch();
+
+        // If ESC is pressed, exit the loop
         if (keyPressed == KEY_ESC)
         {
             break;
         }
-        else
+        // If Backspace is pressed
+        else if (keyPressed == KEY_BACKSPACE)
         {
+            size_t len = strlen(userInput);
+            if (len > 0)
+            {
+                // Remove the last character from userInput
+                userInput[len - 1] = '\0';
+
+                // Move the cursor back and overwrite the character with a space
+                printf("\b \b");
+            }
+        }
+        else if (keyPressed == '\r') // Handle Enter key
+        {
+            // Process the input when Enter is pressed
             i++;
-
-            userInput[0] = keyPressed;
-            userInput[1] = '\0';
-
-            // Print the char if it wasn ESC
-            printf("%c", keyPressed);
-            fgets(userInput + 1, 149, stdin);
 
             char *numberedInput = malloc(150 * sizeof(char));
             if (numberedInput == NULL)
@@ -104,10 +115,11 @@ int editMode()
                 perror("Memory allocation failed.\n");
                 return 1;
             }
-            // User input with number nad dot in front
-            snprintf(numberedInput, 149, "%zu. %s", i, userInput);
 
-            // Write to file
+            // Format the input with a line number
+            snprintf(numberedInput, 149, "%zu. %s\n", i, userInput);
+
+            // Write the input to the file
             gp_file = fopen(g_fileName, "a");
             if (gp_file == NULL)
             {
@@ -121,6 +133,22 @@ int editMode()
             terminalRedraw();
 
             free(numberedInput);
+
+            // Clear the userInput buffer for the next input
+            userInput[0] = '\0';
+        }
+        else
+        {
+            // Append the character to userInput
+            size_t len = strlen(userInput);
+            if (len < 149) // Ensure we don't exceed the buffer size
+            {
+                userInput[len] = keyPressed;
+                userInput[len + 1] = '\0';
+
+                // Print the character to the screen
+                printf("%c", keyPressed);
+            }
         }
     }
 
